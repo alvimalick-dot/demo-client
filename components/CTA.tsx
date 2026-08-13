@@ -1,5 +1,4 @@
-import { ArrowRight, Phone } from "lucide-react";
-import { restaurant } from "@/data/restaurant.config";
+import { ArrowRight, Phone } from "lucide-react";import { restaurant } from "@/data/restaurant.config";
 
 export default function CTA() {
   return (
@@ -7,10 +6,10 @@ export default function CTA() {
       <div className="container-page flex flex-col items-start justify-between gap-6 py-16 text-cream sm:flex-row sm:items-center sm:py-20">
         <div>
           <h2 className="max-w-md text-3xl font-bold leading-tight sm:text-4xl">
-            Hungry? Table's waiting.
+            Running low on caffeine? We're open.
           </h2>
           <p className="mt-2 max-w-sm text-sm text-cream/60">
-            Order online or call ahead — either way, {restaurant.shortName} has you covered.
+            Order ahead or call in — either way, {restaurant.shortName} will have your brew ready.
           </p>
         </div>
         <div className="flex flex-wrap gap-3">

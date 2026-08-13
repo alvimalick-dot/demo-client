@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Flame, Plus, Minus } from "lucide-react";
+import { Coffee, Plus, Minus } from "lucide-react";
 import { restaurant } from "@/data/restaurant.config";
 import { useCart } from "./CartProvider";
 
@@ -64,12 +64,15 @@ export default function Menu() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="font-mono text-sm font-semibold">
-                    Rs {item.price.toLocaleString()}
+                    {restaurant.currency} {item.price.toLocaleString()}
                   </span>
-                  {item.spicy && (
-                    <span className="flex items-center gap-0.5 text-chili">
-                      {Array.from({ length: item.spicy }).map((_, i) => (
-                        <Flame key={i} size={12} className="fill-chili" />
+                  {item.strength && (
+                    <span
+                      title="Coffee strength"
+                      className="flex items-center gap-0.5 text-brass"
+                    >
+                      {Array.from({ length: item.strength }).map((_, i) => (
+                        <Coffee key={i} size={12} className="fill-brass" />
                       ))}
                     </span>
                   )}

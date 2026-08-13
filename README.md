@@ -1,8 +1,10 @@
-# Restaurant Demo — cold-call ordering site
+# Coffee Shop Demo — cold-call ordering site
 
-A single, polished restaurant ordering site built to reskin fast for cold-call
-demos (the leads in your Karachi Toys-style scraped sheet — restaurants with
-"NO_WEBSITE" and a Hot lead score).
+A single, polished coffee shop ordering site built to reskin fast for cold-call
+demos (the leads in your Karachi Toys-style scraped sheet — coffee shops and
+cafés with "NO_WEBSITE" and a Hot lead score). The current demo is themed as a
+specialty coffee shop, but the same template reskins to any café or restaurant
+in minutes.
 
 ## What's in it
 
@@ -14,7 +16,7 @@ demos (the leads in your Karachi Toys-style scraped sheet — restaurants with
   database or payment processor wired up, on purpose, so you can demo it on
   any call without backend setup). Cart persists in the browser via
   localStorage so a refresh mid-demo doesn't lose it.
-- WhatsApp order/contact links, since that's how most of these restaurants
+- WhatsApp order/contact links, since that's how most of these cafés
   actually take orders today.
 - Everything is one design system (colors, type, the "order ticket" card
   motif) so it looks intentional, not templated — but every word of copy is
@@ -26,16 +28,19 @@ Open `data/restaurant.config.ts`. That's the only file you need to touch:
 
 1. `name`, `shortName`, `cuisine`, `city`, `tagline` — from the lead sheet.
 2. `phone`, `whatsapp`, `address`, `mapsQuery` — same.
-3. `monthlySearches` — copy straight from the search-volume column in your
+3. `currency` — the price prefix shown everywhere (e.g. `"Rs"`). Swap it if
+   the lead's city uses a different currency.
+4. `monthlySearches` — copy straight from the search-volume column in your
    leads spreadsheet. This number drives the hero banner, which is the whole
    pitch: "X people searched for you this month and landed on a competitor."
-4. `heroImage` — swap the Unsplash URL for a photo of their actual food if
+5. `heroImage` — swap the Unsplash URL for a photo of their actual shop if
    you have one (Google Business Profile photos work well), otherwise pick
-   a stock photo matching their cuisine.
-5. `menu` — replace with their real dishes and prices if you know them, or
-   leave a believable placeholder menu for the pitch call and swap it once
-   they say yes.
-6. `testimonials` — optional, can leave as placeholder for the demo.
+   a stock photo matching their vibe.
+6. `menu` — replace with their real drinks, bakes, and prices if you know
+   them, or leave a believable placeholder menu for the pitch call and swap
+   it once they say yes. The `strength` field (1–3) shows the little coffee
+   cup icon on strong drinks.
+7. `testimonials` — optional, can leave as placeholder for the demo.
 
 Nothing else needs to change. Colors/fonts/layout stay consistent across
 every demo so you build a recognizable "this is what I do" portfolio look —

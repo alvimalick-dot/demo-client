@@ -71,18 +71,18 @@ export default function Hero() {
             <div className="tear-line my-2" />
             <ul className="space-y-1 font-mono text-xs text-ink/75">
               <li className="flex justify-between">
-                <span>1× Seekh Kebab</span>
-                <span>950</span>
+                <span>1× Cappuccino</span>
+                <span>450</span>
               </li>
               <li className="flex justify-between">
-                <span>1× Kolachi Biryani</span>
-                <span>650</span>
+                <span>1× Butter Croissant</span>
+                <span>350</span>
               </li>
             </ul>
             <div className="tear-line my-2" />
             <p className="flex justify-between font-mono text-xs font-semibold">
               <span>Total</span>
-              <span>Rs 1,600</span>
+              <span>{restaurant.currency} 800</span>
             </p>
           </div>
         </div>

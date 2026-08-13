@@ -7,8 +7,9 @@
   --color-cream-dim: #F2E7D3;
   --color-saffron: #E8A33D;
   --color-saffron-deep: #C97F1E;
-  --color-chili: #8C2F39;
-  --color-chili-deep: #6E212A;
+  /* primary accent — roasted coffee brown for the coffee-shop theme */
+  --color-chili: #5B3A29;
+  --color-chili-deep: #43291B;
   --color-brass: #C9A24B;
   --color-leaf: #4B7B52;
 

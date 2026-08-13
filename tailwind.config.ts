@@ -15,8 +15,9 @@ const config: Config = {
         "cream-dim": "#F2E7D3",
         saffron: "#E8A33D",
         "saffron-deep": "#C97F1E",
-        chili: "#8C2F39",
-        "chili-deep": "#6E212A",
+        // primary accent — roasted coffee brown for the coffee-shop theme
+        chili: "#5B3A29",
+        "chili-deep": "#43291B",
         brass: "#C9A24B",
         leaf: "#4B7B52",
       },

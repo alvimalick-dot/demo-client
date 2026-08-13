@@ -75,7 +75,7 @@ export default function CartDrawer() {
                     <li key={item.id} className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <p className="truncate text-sm font-semibold">{item.name}</p>
-                        <p className="font-mono text-xs text-ink/50">Rs {item.price.toLocaleString()}</p>
+                        <p className="font-mono text-xs text-ink/50">{restaurant.currency} {item.price.toLocaleString()}</p>
                         <div className="mt-2 flex items-center gap-3 rounded-full bg-ink/5 px-2 py-1 w-fit">
                           <button
                             onClick={() => decrementItem(item.id)}
@@ -111,15 +111,15 @@ export default function CartDrawer() {
               <div className="border-t border-ink/10 px-5 py-4">
                 <div className="flex justify-between text-sm text-ink/60">
                   <span>Subtotal</span>
-                  <span className="font-mono">Rs {total.toLocaleString()}</span>
+                  <span className="font-mono">{restaurant.currency} {total.toLocaleString()}</span>
                 </div>
                 <div className="mt-1 flex justify-between text-sm text-ink/60">
                   <span>Delivery</span>
-                  <span className="font-mono">Rs {DELIVERY_FEE}</span>
+                  <span className="font-mono">{restaurant.currency} {DELIVERY_FEE}</span>
                 </div>
                 <div className="mt-2 flex justify-between font-semibold">
                   <span>Total</span>
-                  <span className="font-mono">Rs {(total + DELIVERY_FEE).toLocaleString()}</span>
+                  <span className="font-mono">{restaurant.currency} {(total + DELIVERY_FEE).toLocaleString()}</span>
                 </div>
                 <button onClick={() => setStage("checkout")} className="btn-primary mt-4 w-full">
                   Checkout
@@ -195,10 +195,10 @@ export default function CartDrawer() {
             <div className="mt-auto border-t border-ink/10 pt-4">
               <div className="flex justify-between font-semibold">
                 <span>Total</span>
-                <span className="font-mono">Rs {(total + DELIVERY_FEE).toLocaleString()}</span>
+                <span className="font-mono">{restaurant.currency} {(total + DELIVERY_FEE).toLocaleString()}</span>
               </div>
               <button type="submit" className="btn-primary mt-4 w-full">
-                Place order · Rs {(total + DELIVERY_FEE).toLocaleString()}
+                Place order · {restaurant.currency} {(total + DELIVERY_FEE).toLocaleString()}
               </button>
               <button
                 type="button"
@@ -238,18 +238,18 @@ export default function CartDrawer() {
                     <span>
                       {qty}× {item.name}
                     </span>
-                    <span>Rs {(item.price * qty).toLocaleString()}</span>
+                    <span>{restaurant.currency} {(item.price * qty).toLocaleString()}</span>
                   </li>
                 ))}
                 <li className="flex justify-between text-ink/50">
                   <span>Delivery</span>
-                  <span>Rs {DELIVERY_FEE}</span>
+                  <span>{restaurant.currency} {DELIVERY_FEE}</span>
                 </li>
               </ul>
               <div className="tear-line my-3" />
               <p className="flex justify-between font-mono text-sm font-semibold">
                 <span>Total</span>
-                <span>Rs {(total + DELIVERY_FEE).toLocaleString()}</span>
+                <span>{restaurant.currency} {(total + DELIVERY_FEE).toLocaleString()}</span>
               </p>
             </div>
 

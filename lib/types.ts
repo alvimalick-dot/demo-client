@@ -4,7 +4,8 @@ export type MenuItem = {
   description: string;
   price: number;
   category: string;
-  spicy?: 1 | 2 | 3;
+  /** Coffee strength / intensity indicator (1 = light, 3 = strong) */
+  strength?: 1 | 2 | 3;
   popular?: boolean;
 };
 
@@ -32,6 +33,8 @@ export type RestaurantConfig = {
   address: string;
   mapsQuery: string;
   hours: { day: string; time: string }[];
+  /** Currency symbol/prefix shown before prices, e.g. "Rs" */
+  currency: string;
   monthlySearches: number;
   rating: number;
   reviewCount: number;

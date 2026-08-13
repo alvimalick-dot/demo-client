@@ -24,7 +24,7 @@ type CartContextValue = {
 
 const CartContext = createContext<CartContextValue | null>(null);
 
-const STORAGE_KEY = "demo-cart-v1";
+const STORAGE_KEY = "demo-cart-v2";
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [lines, setLines] = useState<CartLine[]>([]);
