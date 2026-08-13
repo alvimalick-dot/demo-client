@@ -40,7 +40,8 @@ export default function Navbar() {
       }`}
     >
       <div className="container-page flex h-16 items-center justify-between">
-        <Link href="/" className="font-display text-lg font-bold tracking-tight text-cream">
+        <Link href="/" className="flex items-center gap-2 font-display text-lg font-bold uppercase tracking-tight text-cream">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full btn-gradient text-sm">☕</span>
           {restaurant.shortName}
           <span className="text-saffron">.</span>
         </Link>
@@ -50,7 +51,7 @@ export default function Navbar() {
             <Link
               key={l.href}
               href={l.href}
-              className={`text-sm font-medium transition ${
+              className={`text-sm font-semibold uppercase tracking-wide transition ${
                 isActive(l.href)
                   ? "text-saffron"
                   : "text-cream/70 hover:text-cream"
@@ -72,11 +73,11 @@ export default function Navbar() {
           <button
             onClick={() => setCartOpen(true)}
             aria-label="Open cart"
-            className="relative flex h-10 w-10 items-center justify-center rounded-full bg-saffron text-ink transition hover:bg-saffron-deep"
+            className="relative flex h-10 w-10 items-center justify-center rounded-full btn-gradient text-ink transition hover:scale-105 active:scale-95"
           >
             <ShoppingBag size={18} />
             {count > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-chili font-mono text-[11px] font-semibold text-cream">
+              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-chili font-mono text-[11px] font-semibold text-cream animate-pop">
                 {count}
               </span>
             )}

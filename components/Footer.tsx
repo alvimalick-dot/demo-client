@@ -14,7 +14,7 @@ export default function Footer() {
     <footer className="border-t border-cream/10">
       <div className="container-page grid gap-10 py-12 md:grid-cols-3">
         <div>
-          <p className="font-display text-xl font-bold">
+          <p className="font-display text-xl font-bold uppercase">
             {restaurant.shortName}
             <span className="text-saffron">.</span>
           </p>

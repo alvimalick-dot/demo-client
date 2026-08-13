@@ -4,6 +4,7 @@ import { useState } from "react";
 import { X, Plus, Minus, Trash2, CheckCircle2, Loader2 } from "lucide-react";
 import { restaurant } from "@/data/restaurant.config";
 import { useCart } from "./CartProvider";
+import Confetti from "./Confetti";
 
 type Stage = "cart" | "checkout" | "placing" | "done";
 
@@ -225,9 +226,12 @@ export default function CartDrawer() {
         )}
 
         {stage === "done" && (
-          <div className="flex flex-1 flex-col px-5 py-6">
-            <div className="flex flex-col items-center text-center">
-              <CheckCircle2 size={40} className="text-leaf" />
+          <div className="relative flex flex-1 flex-col overflow-hidden px-5 py-6">
+            <Confetti />
+            <div className="relative flex flex-col items-center text-center">
+              <span className="flex h-16 w-16 items-center justify-center rounded-full btn-gradient animate-pop">
+                <CheckCircle2 size={36} className="text-ink" />
+              </span>
               <h3 className="mt-3 font-display text-xl font-semibold text-cream">Order confirmed</h3>
               <p className="mt-1 text-sm text-cream/55">
                 {restaurant.shortName} is preparing it now. Estimated arrival in{" "}
@@ -261,8 +265,8 @@ export default function CartDrawer() {
               </p>
             </div>
 
-            <button onClick={finishAndReset} className="btn-primary mt-6 w-full">
-              Done
+            <button onClick={finishAndReset} className="btn-primary btn-gradient mt-6 w-full">
+              Done — grab another brew ☕
             </button>
           </div>
         )}

@@ -1,24 +1,32 @@
 @import "tailwindcss";
 
 @theme {
-  /* ---- Dark roastery palette ---- */
-  --color-ink: #0f0b08;        /* page background — deep espresso */
-  --color-ink-soft: #1b130e;    /* raised card surface */
-  --color-ink-mid: #2a2018;     /* borders / hover surfaces */
-  --color-cream: #f2e7d3;       /* primary text — warm ivory */
-  --color-cream-dim: #c9bca4;   /* muted text */
-  --color-saffron: #e0a83c;     /* caramel gold — primary accent */
-  --color-saffron-deep: #b97e25;
-  --color-chili: #c2623c;       /* terracotta — secondary accent */
-  --color-brass: #c9a24b;       /* soft gold — stars, strength */
-  --color-leaf: #8fa87f;        /* sage — success */
+  /* ---- Crusteez-style palette: dark charcoal, white, hot orange ---- */
+  --color-ink: #212121;        /* page background — deep charcoal */
+  --color-ink-soft: #2b2b2b;   /* raised card surface */
+  --color-ink-mid: #3a3a3a;    /* borders / hover surfaces */
+  --color-cream: #ffffff;      /* primary text — bright white */
+  --color-cream-dim: #b8b8b8;  /* muted text */
+  --color-saffron: #ff5500;    /* hot orange — primary accent */
+  --color-saffron-deep: #e04a00;
+  --color-chili: #ff7733;      /* lighter orange — secondary accent */
+  --color-brass: #ff5500;      /* stars, strength */
+  --color-leaf: #8fa87f;       /* sage — success */
+  /* playful accents kept for a lively, colorful demo */
+  --color-rose: #ff7a5c;       /* peach-orange — bakes */
+  --color-sky: #6fb6d8;        /* cool blue — cold drinks */
+  --color-mint: #8fc9a0;       /* fresh green — breakfast */
+  --color-grape: #b39ddb;      /* violet — extras */
+  /* light section (featured products) */
+  --color-paper: #f4f1ea;
+  --color-coal: #1c1c1c;       /* text on light sections */
 
   --font-display: var(--font-display-raw);
   --font-body: var(--font-body-raw);
   --font-mono: var(--font-mono-raw);
 
   --radius-ticket: 18px;
-  --shadow-ticket: 0 1px 0 rgba(242, 231, 211, 0.05), 0 24px 48px -20px rgba(0, 0, 0, 0.65);
+  --shadow-ticket: 0 1px 0 rgba(255, 255, 255, 0.05), 0 24px 48px -20px rgba(0, 0, 0, 0.6);
 
   --animate-slide-up: slide-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-count-pulse: count-pulse 2s ease-in-out infinite;
@@ -27,10 +35,23 @@
   --animate-spin-slow: spin-slow 18s linear infinite;
   --animate-float: float 6s ease-in-out infinite;
   --animate-rise: rise 3.2s ease-in-out infinite;
+  --animate-ticker-in: ticker-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-aurora: aurora 16s ease-in-out infinite alternate;
+  --animate-blob: blob-drift 14s ease-in-out infinite alternate;
+  --animate-shimmer: shimmer 3.5s linear infinite;
+  --animate-steam: steam-rise 2.6s ease-out infinite;
+  --animate-bounce-soft: bounce-soft 2.2s ease-in-out infinite;
+  --animate-pop: pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-confetti: confetti-fall 3.4s linear forwards;
+  --animate-scroll-words: scroll-words 20s linear infinite;
 }
 
 @keyframes spin-slow {
   to { transform: rotate(360deg); }
+}
+@keyframes ticker-in {
+  from { transform: translateX(-120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes slide-up {
@@ -59,16 +80,55 @@
   100% { transform: translateY(-90px) scale(1.6); opacity: 0; }
 }
 
+/* vertical word cascade (Crusteez scroll-text signature) */
+@keyframes scroll-words {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+@keyframes aurora {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes blob-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -30px) scale(1.15); }
+  100% { transform: translate(-25px, 20px) scale(0.95); }
+}
+@keyframes shimmer {
+  to { background-position: 200% 0; }
+}
+@keyframes steam-rise {
+  0% { transform: translateY(0) translateX(0) scaleX(1); opacity: 0; }
+  25% { opacity: 0.6; }
+  100% { transform: translateY(-22px) translateX(5px) scaleX(1.7); opacity: 0; }
+}
+@keyframes bounce-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes pop {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+@keyframes confetti-fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(320px) rotate(660deg); opacity: 0; }
+}
+
 html {
   scroll-behavior: smooth;
 }
 body {
   @apply bg-ink text-cream font-body antialiased;
-  background-image: radial-gradient(circle at 1px 1px, rgba(242, 231, 211, 0.028) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
   background-size: 22px 22px;
 }
+/* bold, uppercase, heavy display type — Crusteez energy */
 h1, h2, h3, h4 {
-  @apply font-display;
+  @apply font-display uppercase;
 }
 :focus-visible {
   outline: 2px solid var(--color-saffron);
@@ -90,9 +150,14 @@ h1, h2, h3, h4 {
 .ticket {
   position: relative;
   background: var(--color-ink-soft);
-  border: 1px solid rgba(242, 231, 211, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--radius-ticket);
   box-shadow: var(--shadow-ticket);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.ticket:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 85, 0, 0.4);
 }
 .ticket-notch::before,
 .ticket-notch::after {
@@ -118,7 +183,7 @@ h1, h2, h3, h4 {
     transparent 14px
   );
   height: 1px;
-  opacity: 0.16;
+  opacity: 0.18;
 }
 
 .container-page {
@@ -126,14 +191,14 @@ h1, h2, h3, h4 {
 }
 
 .eyebrow {
-  @apply font-mono text-xs uppercase tracking-[0.22em] text-saffron;
+  @apply font-mono text-xs font-semibold uppercase tracking-[0.22em] text-saffron;
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center gap-2 rounded-full bg-saffron px-6 py-3 font-body font-semibold text-ink transition hover:bg-saffron-deep active:scale-[0.98];
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-saffron px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-ink transition hover:bg-saffron-deep active:scale-[0.98];
 }
 .btn-secondary {
-  @apply inline-flex items-center justify-center gap-2 rounded-full border border-cream/25 bg-transparent px-6 py-3 font-body font-semibold text-cream transition hover:border-cream/60 hover:bg-cream/5 active:scale-[0.98];
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-cream/30 bg-transparent px-6 py-3 font-body text-sm font-bold uppercase tracking-wide text-cream transition hover:border-cream/70 hover:bg-cream/5 active:scale-[0.98];
 }
 .btn-ghost {
   @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 font-body text-sm font-semibold text-cream/70 transition hover:text-cream;
@@ -142,20 +207,86 @@ h1, h2, h3, h4 {
 /* paper-grain emphasis surface (used on dark-accent strips) */
 .grain-card {
   background-color: var(--color-ink-soft);
-  background-image: radial-gradient(circle at 1px 1px, rgba(242, 231, 211, 0.05) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
   background-size: 18px 18px;
 }
 
 /* aurora glow used behind hero / section headers */
 .glow-gold {
-  background: radial-gradient(60% 60% at 50% 40%, rgba(224, 168, 60, 0.16) 0%, transparent 70%);
+  background: radial-gradient(60% 60% at 50% 40%, rgba(255, 85, 0, 0.18) 0%, transparent 70%);
 }
 
-/* dashed coffee-ring ornament */
-.ring-dash {
-  background-image: repeating-conic-gradient(
-    from 0deg,
-    rgba(224, 168, 60, 0.5) 0deg 6deg,
-    transparent 6deg 24deg
+/* colorful animated aurora wash (layered gradient blobs) */
+.aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 85, 0, 0.16),
+    rgba(255, 119, 51, 0.13),
+    rgba(255, 122, 92, 0.11),
+    rgba(179, 157, 219, 0.1),
+    rgba(111, 182, 216, 0.1),
+    rgba(255, 85, 0, 0.16)
   );
+  background-size: 300% 300%;
+  animation: var(--animate-aurora);
+}
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.4;
+  animation: var(--animate-blob);
+}
+
+/* hot-orange gradient text (headline accents) */
+.text-gradient {
+  background: linear-gradient(100deg, #ff5500 5%, #ff7733 40%, #ff9a5c 75%, #ff5500 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* shimmering gradient button — the "go" CTA */
+.btn-gradient {
+  background-image: linear-gradient(110deg, #ff5500, #ff7733 35%, #ff9a5c 70%, #ff5500);
+  background-size: 220% 100%;
+  animation: var(--animate-shimmer);
+}
+
+/* rising steam over hot drinks */
+.steam {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 26px;
+  height: 22px;
+  pointer-events: none;
+}
+.steam span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 5px;
+  height: 9px;
+  border-radius: 9999px;
+  background: linear-gradient(to top, rgba(255, 85, 0, 0), rgba(255, 255, 255, 0.6));
+  filter: blur(2px);
+  animation: var(--animate-steam);
+}
+.steam span:nth-child(1) { left: 2px; animation-delay: 0s; }
+.steam span:nth-child(2) { left: 11px; animation-delay: 0.7s; }
+.steam span:nth-child(3) { left: 19px; animation-delay: 1.3s; }
+
+/* confetti pieces (order-confirmation burst) */
+.confetti-piece {
+  position: absolute;
+  top: -14px;
+  width: 8px;
+  height: 12px;
+  border-radius: 2px;
+  animation: var(--animate-confetti);
 }

@@ -32,6 +32,7 @@ export const restaurant: RestaurantConfig = {
   avgDeliveryMins: 25,
   currency: "Rs",
   since: 2019,
+  avgOrderValue: 900,
   about:
     "A neighbourhood roastery that treats every cup like a small ceremony — beans roasted in-house, milk steamed to order, pastries baked before sunrise.",
   story: [

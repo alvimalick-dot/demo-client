@@ -8,21 +8,25 @@ const points = [
     icon: PercentCircle,
     title: "No 25–30% commission",
     body: "Every order placed here goes straight to the till — nothing shaved off by a delivery app.",
+    chip: "bg-chili/15 text-chili",
   },
   {
     icon: Search,
     title: "Shows up when people search",
     body: "A real site with your menu and location is what Google actually ranks — not a Facebook page.",
+    chip: "bg-sky/15 text-sky",
   },
   {
     icon: ClipboardList,
     title: "Orders arrive organized",
     body: "Every order comes in as a clear ticket — item, quantity, total. No missed WhatsApp messages.",
+    chip: "bg-rose/15 text-rose",
   },
   {
     icon: MessageCircle,
     title: "Still your number, still WhatsApp",
     body: "Customers can check out here or tap straight through to WhatsApp — whichever they prefer.",
+    chip: "bg-mint/15 text-mint",
   },
 ];
 
@@ -40,12 +44,15 @@ export default function WhyDirect() {
 
         <Reveal delay={0.1} stagger={0.1}>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {points.map(({ icon: Icon, title, body }) => (
-              <div key={title} data-reveal-child>
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-saffron/12 text-saffron">
-                  <Icon size={20} />
+            {points.map(({ icon: Icon, title, body, chip }, i) => (
+              <div key={title} data-reveal-child className="group">
+                <div className="flex items-center justify-between">
+                  <div className={`flex h-11 w-11 items-center justify-center rounded-full ${chip} transition group-hover:scale-110`}>
+                    <Icon size={20} />
+                  </div>
+                  <span className="font-display text-3xl text-cream/15">0{i + 1}</span>
                 </div>
-                <h3 className="mt-4 font-display text-base font-semibold text-cream">{title}</h3>
+                <h3 className="mt-4 font-display text-base font-bold text-cream">{title}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-cream/55">{body}</p>
               </div>
             ))}

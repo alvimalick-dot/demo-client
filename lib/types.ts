@@ -38,6 +38,8 @@ export type RestaurantConfig = {
   monthlySearches: number;
   /** Year the shop opened, shown in the marquee / about page */
   since: number;
+  /** Average order value in local currency, used by the commission calculator */
+  avgOrderValue: number;
   /** Short one-liner used on the about page hero */
   about: string;
   /** Story paragraphs for the about page */

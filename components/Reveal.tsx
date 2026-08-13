@@ -21,6 +21,10 @@ type RevealProps = {
 /**
  * Wraps content and plays a fade/slide-in the first time it scrolls into view.
  * Set `stagger` and mark children with `data-reveal-child` for staggered groups.
+ *
+ * Content already on screen when the page loads (e.g. a header just under the
+ * navbar) reveals immediately instead of staying hidden, so nothing can ever
+ * be stuck at opacity 0.
  */
 export default function Reveal({
   children,
@@ -37,9 +41,7 @@ export default function Reveal({
     if (!el) return;
 
     const targets: gsap.TweenTarget[] =
-      stagger > 0
-        ? Array.from(el.querySelectorAll("[data-reveal-child]"))
-        : [el];
+      stagger > 0 ? Array.from(el.querySelectorAll("[data-reveal-child]")) : [el];
 
     const tween = gsap.fromTo(
       targets,
@@ -51,6 +53,7 @@ export default function Reveal({
         ease: "power3.out",
         delay,
         stagger,
+        paused: true,
       }
     );
 
@@ -58,9 +61,16 @@ export default function Reveal({
       trigger: el,
       start: "top 88%",
       once: true,
-      onEnter: () => tween.play(),
+      animation: tween,
+      toggleActions: "play none none none",
     });
-    tween.pause();
+
+    // If the element is already within the viewport on mount, reveal right away —
+    // this covers headers/heroes near the top of a page.
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.92) {
+      tween.play();
+    }
 
     // re-measure after images/fonts settle so triggers don't fire early
     const raf = requestAnimationFrame(() => ScrollTrigger.refresh());

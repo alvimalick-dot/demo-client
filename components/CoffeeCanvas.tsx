@@ -20,7 +20,7 @@ export default function CoffeeCanvas({ className = "" }: { className?: string })
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0x0f0b08, 10, 22);
+    scene.fog = new THREE.Fog(0x212121, 10, 22);
 
     const camera = new THREE.PerspectiveCamera(
       60,
@@ -42,8 +42,8 @@ export default function CoffeeCanvas({ className = "" }: { className?: string })
       const ctx = c.getContext("2d")!;
       const g = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
       g.addColorStop(0, "rgba(255,255,255,1)");
-      g.addColorStop(0.35, "rgba(255,235,200,0.85)");
-      g.addColorStop(1, "rgba(255,235,200,0)");
+      g.addColorStop(0.35, "rgba(255,150,90,0.9)");
+      g.addColorStop(1, "rgba(255,150,90,0)");
       ctx.fillStyle = g;
       ctx.fillRect(0, 0, 64, 64);
       return new THREE.CanvasTexture(c);
@@ -69,7 +69,7 @@ export default function CoffeeCanvas({ className = "" }: { className?: string })
       transparent: true,
       depthWrite: false,
       opacity: 0.55,
-      color: 0xe0a83c,
+      color: 0xff5500,
       blending: THREE.AdditiveBlending,
       sizeAttenuation: true,
     });
@@ -80,13 +80,13 @@ export default function CoffeeCanvas({ className = "" }: { className?: string })
     const beans = new THREE.Group();
     const beanGeo = new THREE.IcosahedronGeometry(1, 1);
     const wireMat = new THREE.MeshBasicMaterial({
-      color: 0xc9a24b,
+      color: 0xff5500,
       wireframe: true,
       transparent: true,
       opacity: 0.35,
     });
     const solidMat = new THREE.MeshBasicMaterial({
-      color: 0x2a2018,
+      color: 0x2b2b2b,
       transparent: true,
       opacity: 0.85,
     });

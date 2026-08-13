@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Archivo_Black, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { restaurant } from "@/data/restaurant.config";
 import { CartProvider } from "@/components/CartProvider";
 import CartDrawer from "@/components/CartDrawer";
+import DemoRibbon from "@/components/DemoRibbon";
 
-const display = Fraunces({
+const display = Archivo_Black({
   subsets: ["latin"],
+  weight: "400",
   variable: "--font-display-raw",
-  weight: ["400", "500", "600", "700", "900"],
 });
 const body = Inter({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${display.variable} ${body.variable} ${mono.variable}`}>
         <CartProvider>
+          <DemoRibbon />
           {children}
           <CartDrawer />
         </CartProvider>
