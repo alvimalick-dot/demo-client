@@ -74,83 +74,87 @@ export default function MenuGrid({ withCart = false }: MenuGridProps) {
                 className="pointer-events-none absolute inset-0 rounded-ticket"
                 style={{ background: theme.glow }}
               />
-              <TiltCard>
-                <div className="ticket ticket-notch relative flex flex-col p-5">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex items-start gap-3">
-                      <span
-                        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-xl ${theme.chip} animate-pop`}
-                        title={item.category}
-                      >
-                        {theme.emoji}
+              <TiltCard className="group">
+                <div className="ticket ticket-notch relative flex h-full flex-col overflow-hidden p-0">
+                  {/* photo header */}
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
+                    <span
+                      className={`absolute left-3 top-3 flex h-9 w-9 items-center justify-center rounded-full text-base shadow-lg ${theme.chip}`}
+                      title={item.category}
+                    >
+                      {theme.emoji}
+                    </span>
+                    {item.popular && (
+                      <span className="absolute right-3 top-3 rounded-full bg-saffron px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-wide text-ink shadow-lg">
+                        ★ Popular
                       </span>
-                      <div>
-                        <div className="flex flex-wrap items-center gap-2">
-                          <h3 className="font-display text-lg font-semibold text-cream">{item.name}</h3>
-                          {item.popular && (
-                            <span className="rounded-full bg-saffron/15 px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wide text-saffron">
-                              ★ Popular
-                            </span>
-                          )}
-                        </div>
-                        <p className="mt-1 text-sm leading-snug text-cream/55">{item.description}</p>
+                    )}
+                    {hot && (
+                      <div className="steam" style={{ top: 8, left: "50%" }} aria-hidden>
+                        <span />
+                        <span />
+                        <span />
                       </div>
-                    </div>
+                    )}
                   </div>
 
-                  <div className="tear-line my-4" />
-
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="font-mono text-sm font-semibold text-gradient">
-                        {restaurant.currency} {item.price.toLocaleString()}
-                      </span>
-                      {item.strength && (
-                        <span title="Coffee strength" className="flex items-center gap-0.5 text-brass">
-                          {Array.from({ length: item.strength }).map((_, i) => (
-                            <Coffee key={i} size={12} className="fill-brass" />
-                          ))}
-                          {item.strength >= 3 && <Flame size={12} className="text-chili" />}
+                  {/* body */}
+                  <div className="flex flex-1 flex-col p-5">
+                    <h3 className="text-lg font-bold text-cream">{item.name}</h3>
+                    <p className="mt-1 flex-1 text-sm leading-snug text-cream/55">{item.description}</p>
+                    <div className="tear-line my-4" />
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono text-sm font-semibold text-gradient">
+                          {restaurant.currency} {item.price.toLocaleString()}
                         </span>
-                      )}
-                    </div>
+                        {item.strength && (
+                          <span title="Coffee strength" className="flex items-center gap-0.5 text-brass">
+                            {Array.from({ length: item.strength }).map((_, i) => (
+                              <Coffee key={i} size={12} className="fill-brass" />
+                            ))}
+                            {item.strength >= 3 && <Flame size={12} className="text-chili" />}
+                          </span>
+                        )}
+                      </div>
 
-                    {withCart &&
-                      (qty === 0 ? (
-                        <button
-                          onClick={() => addItem(item)}
-                          className="flex items-center gap-1.5 rounded-full btn-gradient px-4 py-2 text-xs font-bold text-ink transition hover:scale-105 active:scale-95"
-                        >
-                          <Plus size={13} /> Add
-                        </button>
-                      ) : (
-                        <div className="flex items-center gap-3 rounded-full btn-gradient px-3 py-1.5 text-ink">
-                          <button
-                            onClick={() => decrementItem(item.id)}
-                            aria-label={`Remove one ${item.name}`}
-                            className="flex h-5 w-5 items-center justify-center"
-                          >
-                            <Minus size={13} />
-                          </button>
-                          <span className="w-4 text-center font-mono text-xs font-bold">{qty}</span>
+                      {withCart &&
+                        (qty === 0 ? (
                           <button
                             onClick={() => addItem(item)}
-                            aria-label={`Add one ${item.name}`}
-                            className="flex h-5 w-5 items-center justify-center"
+                            className="flex items-center gap-1.5 rounded-full btn-gradient px-4 py-2 text-xs font-bold text-ink transition hover:scale-105 active:scale-95"
                           >
-                            <Plus size={13} />
+                            <Plus size={13} /> Add
                           </button>
-                        </div>
-                      ))}
-                  </div>
-
-                  {hot && (
-                    <div className="steam" aria-hidden>
-                      <span />
-                      <span />
-                      <span />
+                        ) : (
+                          <div className="flex items-center gap-3 rounded-full btn-gradient px-3 py-1.5 text-ink">
+                            <button
+                              onClick={() => decrementItem(item.id)}
+                              aria-label={`Remove one ${item.name}`}
+                              className="flex h-5 w-5 items-center justify-center"
+                            >
+                              <Minus size={13} />
+                            </button>
+                            <span className="w-4 text-center font-mono text-xs font-bold">{qty}</span>
+                            <button
+                              onClick={() => addItem(item)}
+                              aria-label={`Add one ${item.name}`}
+                              className="flex h-5 w-5 items-center justify-center"
+                            >
+                              <Plus size={13} />
+                            </button>
+                          </div>
+                        ))}
                     </div>
-                  )}
+                  </div>
                 </div>
               </TiltCard>
             </div>

@@ -44,6 +44,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "cappuccino",
       name: "Cappuccino",
+      image:
+        "https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=800&auto=format&fit=crop",
       description: "Double espresso, silky steamed milk, thick foam crown.",
       price: 450,
       category: "Hot Coffee",
@@ -53,6 +55,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "flat-white",
       name: "Flat White",
+      image:
+        "https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800&auto=format&fit=crop",
       description: "Two ristretto shots, velvety microfoam — the barista's pick.",
       price: 500,
       category: "Hot Coffee",
@@ -62,6 +66,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "latte",
       name: "Caffè Latte",
+      image:
+        "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop",
       description: "Smooth espresso with steamed milk, light and comforting.",
       price: 480,
       category: "Hot Coffee",
@@ -70,6 +76,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "americano",
       name: "Americano",
+      image:
+        "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800&auto=format&fit=crop",
       description: "Double espresso over hot water — clean and direct.",
       price: 350,
       category: "Hot Coffee",
@@ -78,6 +86,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "mocha",
       name: "Mocha",
+      image:
+        "https://images.unsplash.com/photo-1512568400610-62da28bc8a13?q=80&w=800&auto=format&fit=crop",
       description: "Espresso, Belgian chocolate, steamed milk, whipped cream.",
       price: 550,
       category: "Hot Coffee",
@@ -86,6 +96,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "pour-over",
       name: "Pour-Over (V60)",
+      image:
+        "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=800&auto=format&fit=crop",
       description: "Single-origin beans brewed to order, cup by cup.",
       price: 600,
       category: "Hot Coffee",
@@ -94,6 +106,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "iced-latte",
       name: "Iced Latte",
+      image:
+        "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=800&auto=format&fit=crop",
       description: "Espresso over milk and ice, shaken cold.",
       price: 520,
       category: "Cold Coffee",
@@ -103,6 +117,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "cold-brew",
       name: "Cold Brew",
+      image:
+        "https://images.unsplash.com/photo-1521305916504-4a1121188589?q=80&w=800&auto=format&fit=crop",
       description: "Steeped 18 hours, served over ice — smooth, never bitter.",
       price: 560,
       category: "Cold Coffee",
@@ -112,6 +128,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "iced-americano",
       name: "Iced Americano",
+      image:
+        "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=800&auto=format&fit=crop",
       description: "Double espresso, cold water, big ice.",
       price: 400,
       category: "Cold Coffee",
@@ -120,6 +138,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "caramel-frappe",
       name: "Caramel Frappe",
+      image:
+        "https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=800&auto=format&fit=crop",
       description: "Blended coffee, caramel, whipped cream — dessert in a cup.",
       price: 620,
       category: "Cold Coffee",
@@ -128,6 +148,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "affogato",
       name: "Affogato",
+      image:
+        "https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=800&auto=format&fit=crop",
       description: "Vanilla gelato drowned in a hot double shot.",
       price: 580,
       category: "Cold Coffee",
@@ -136,6 +158,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "butter-croissant",
       name: "Butter Croissant",
+      image:
+        "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=800&auto=format&fit=crop",
       description: "Laminated and baked fresh every morning.",
       price: 350,
       category: "Bakes & Pastries",
@@ -144,6 +168,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "fudgy-brownie",
       name: "Fudgy Brownie",
+      image:
+        "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=800&auto=format&fit=crop",
       description: "Dark chocolate, sea salt, served slightly warm.",
       price: 380,
       category: "Bakes & Pastries",
@@ -151,6 +177,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "blueberry-muffin",
       name: "Blueberry Muffin",
+      image:
+        "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?q=80&w=800&auto=format&fit=crop",
       description: "Bursting berries under a streusel top.",
       price: 320,
       category: "Bakes & Pastries",
@@ -158,6 +186,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "choc-chip-cookie",
       name: "Chocolate Chip Cookie",
+      image:
+        "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=800&auto=format&fit=crop",
       description: "Thick, chewy, best with a flat white.",
       price: 250,
       category: "Bakes & Pastries",
@@ -165,6 +195,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "banana-bread",
       name: "Banana Bread",
+      image:
+        "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=800&auto=format&fit=crop",
       description: "Toasted slice with honey butter.",
       price: 280,
       category: "Bakes & Pastries",
@@ -172,6 +204,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "basque-cheesecake",
       name: "Basque Cheesecake",
+      image:
+        "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800&auto=format&fit=crop",
       description: "Burnt top, creamy centre, baked in-house.",
       price: 550,
       category: "Bakes & Pastries",
@@ -180,6 +214,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "avocado-toast",
       name: "Avocado Toast",
+      image:
+        "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?q=80&w=800&auto=format&fit=crop",
       description: "Sourdough, smashed avocado, chilli flakes, poached egg.",
       price: 750,
       category: "Breakfast",
@@ -188,6 +224,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "breakfast-sandwich",
       name: "Breakfast Sandwich",
+      image:
+        "https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=800&auto=format&fit=crop",
       description: "Egg, cheese, house sauce on a toasted brioche bun.",
       price: 650,
       category: "Breakfast",
@@ -195,6 +233,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "shakshuka",
       name: "Shakshuka",
+      image:
+        "https://images.unsplash.com/photo-1590412200988-a436970781fa?q=80&w=800&auto=format&fit=crop",
       description: "Baked eggs in spiced tomato, served with sourdough.",
       price: 850,
       category: "Breakfast",
@@ -202,6 +242,8 @@ export const restaurant: RestaurantConfig = {
     {
       id: "granola-bowl",
       name: "Granola Bowl",
+      image:
+        "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?q=80&w=800&auto=format&fit=crop",
       description: "Toasted oats, yoghurt, honey, seasonal fruit.",
       price: 700,
       category: "Breakfast",

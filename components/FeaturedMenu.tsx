@@ -55,33 +55,43 @@ export default function FeaturedMenu() {
             return (
               <div
                 key={item.id}
-                className="w-[260px] shrink-0 snap-start rounded-2xl border border-coal/10 bg-white p-5 shadow-[0_10px_30px_-14px_rgba(0,0,0,0.35)] transition hover:-translate-y-1 hover:shadow-[0_18px_40px_-16px_rgba(255,85,0,0.45)]"
+                className="group w-[280px] shrink-0 snap-start overflow-hidden rounded-2xl border border-coal/10 bg-white shadow-[0_10px_30px_-14px_rgba(0,0,0,0.35)] transition hover:-translate-y-1 hover:shadow-[0_18px_40px_-16px_rgba(255,85,0,0.45)]"
               >
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] font-semibold uppercase tracking-wide text-coal/45">
-                    {item.category}
-                  </span>
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-coal/30 via-transparent to-transparent" />
                   <span
-                    className={`flex h-10 w-10 items-center justify-center rounded-full text-lg ${theme.chip}`}
+                    className={`absolute left-3 top-3 flex h-9 w-9 items-center justify-center rounded-full text-base shadow-lg ${theme.chip}`}
                     title={item.category}
                   >
                     {theme.emoji}
                   </span>
                 </div>
-                <h3 className="mt-3 text-lg font-bold text-coal">{item.name}</h3>
-                <p className="mt-1 text-sm leading-snug text-coal/60">{item.description}</p>
-                <div className="my-4 h-px border-t border-dashed border-coal/20" />
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-base font-bold text-saffron">
-                    {restaurant.currency} {item.price.toLocaleString()}
+                <div className="p-5">
+                  <span className="font-mono text-[10px] font-semibold uppercase tracking-wide text-coal/45">
+                    {item.category}
                   </span>
-                  <Link
-                    href="/order"
-                    aria-label={`Order ${item.name}`}
-                    className="flex h-9 w-9 items-center justify-center rounded-full bg-saffron text-white transition hover:bg-saffron-deep"
-                  >
-                    <Plus size={16} />
-                  </Link>
+                  <h3 className="mt-1 text-lg font-bold text-coal">{item.name}</h3>
+                  <p className="mt-1 text-sm leading-snug text-coal/60">{item.description}</p>
+                  <div className="my-4 h-px border-t border-dashed border-coal/20" />
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-base font-bold text-saffron">
+                      {restaurant.currency} {item.price.toLocaleString()}
+                    </span>
+                    <Link
+                      href="/order"
+                      aria-label={`Order ${item.name}`}
+                      className="flex h-9 w-9 items-center justify-center rounded-full bg-saffron text-white transition hover:bg-saffron-deep"
+                    >
+                      <Plus size={16} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             );

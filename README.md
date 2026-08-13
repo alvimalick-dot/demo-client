@@ -16,10 +16,12 @@ in minutes.
   - `/about` — brand story, roast levels, values.
   - `/contact` — map, hours, WhatsApp/phone cards, contact form.
 - **Motion everywhere**: a Three.js hero background (drifting coffee particles +
-  wireframe beans + mouse parallax) and GSAP ScrollTrigger reveals, staggered
-  menu cards, animated counters, and a marquee strip.
-- **Dark "roastery" theme** — deep espresso background, ivory text, caramel-gold
-  accents, and a serif display font. Recognizably *coffee*, not templated.
+  wireframe beans + mouse parallax), GSAP ScrollTrigger reveals, staggered menu
+  cards, a vertical scrolling word cascade, and marquee/steam/confetti details.
+- **High-energy Crusteez-style theme** — dark charcoal (#212121), hot orange
+  (#ff5500), white text, heavy uppercase display type (Archivo Black), jagged
+  zigzag dividers, and a light "Featured Products" carousel. Aggressive, bold,
+  and recognizable — not a generic template.
 - The cold-call pitch is untouched: the hero banner reframes the lead's own
   search-volume number ("X people searched for you this month and landed on a
   competitor"), the "why order direct" section sells against 25–30% delivery-app
@@ -38,8 +40,11 @@ Open `data/restaurant.config.ts`. That's the only file you need to touch:
    pitch.
 5. `heroImage` — swap the Unsplash URL for a photo of their actual shop if you
    have one (Google Business Profile photos work well).
-6. `menu` — replace with their real drinks, bakes, and prices. The `strength`
-   field (1–3) shows the coffee-cup icon on strong drinks.
+6. `menu` — replace with their real drinks, bakes, and prices. Each item has an
+   optional `image` URL (swap in photos of their actual food — Google Business
+   Profile photos work great); if omitted, the card falls back to a colored
+   emoji tile. The `strength` field (1–3) shows the coffee-cup icon on strong
+   drinks.
 7. `about` / `story` / `since` — drive the About page.
 8. `testimonials` — optional, can leave as placeholder for the demo.
 

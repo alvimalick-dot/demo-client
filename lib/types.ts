@@ -4,6 +4,8 @@ export type MenuItem = {
   description: string;
   price: number;
   category: string;
+  /** Photo shown on the menu card (any image URL). Falls back to a colored emoji tile if missing. */
+  image?: string;
   /** Coffee strength / intensity indicator (1 = light, 3 = strong) */
   strength?: 1 | 2 | 3;
   popular?: boolean;
