@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Restaurant Demo — cold-call ordering site
 
-## Getting Started
+A single, polished restaurant ordering site built to reskin fast for cold-call
+demos (the leads in your Karachi Toys-style scraped sheet — restaurants with
+"NO_WEBSITE" and a Hot lead score).
 
-First, run the development server:
+## What's in it
+
+- Full landing page: hero, live "X people searched this month" banner pulled
+  from the lead's own search-volume number, menu with category tabs, a
+  "why order direct" section (commission/visibility pitch), map + hours,
+  reviews, and a footer.
+- A working cart → checkout → confirmation flow (client-side only — no real
+  database or payment processor wired up, on purpose, so you can demo it on
+  any call without backend setup). Cart persists in the browser via
+  localStorage so a refresh mid-demo doesn't lose it.
+- WhatsApp order/contact links, since that's how most of these restaurants
+  actually take orders today.
+- Everything is one design system (colors, type, the "order ticket" card
+  motif) so it looks intentional, not templated — but every word of copy is
+  driven from a single config file, so reskinning is fast.
+
+## Reskin for a new lead in under 5 minutes
+
+Open `data/restaurant.config.ts`. That's the only file you need to touch:
+
+1. `name`, `shortName`, `cuisine`, `city`, `tagline` — from the lead sheet.
+2. `phone`, `whatsapp`, `address`, `mapsQuery` — same.
+3. `monthlySearches` — copy straight from the search-volume column in your
+   leads spreadsheet. This number drives the hero banner, which is the whole
+   pitch: "X people searched for you this month and landed on a competitor."
+4. `heroImage` — swap the Unsplash URL for a photo of their actual food if
+   you have one (Google Business Profile photos work well), otherwise pick
+   a stock photo matching their cuisine.
+5. `menu` — replace with their real dishes and prices if you know them, or
+   leave a believable placeholder menu for the pitch call and swap it once
+   they say yes.
+6. `testimonials` — optional, can leave as placeholder for the demo.
+
+Nothing else needs to change. Colors/fonts/layout stay consistent across
+every demo so you build a recognizable "this is what I do" portfolio look —
+swap it per-client later once they're onboard.
+
+## Run it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Notes on the "backend"
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+There's no database or real order storage — `CartDrawer.tsx` simulates a
+network call with a short delay, then shows an order-ticket confirmation with
+a random order number. That's enough to demo the full experience live on a
+call. When a lead signs, wiring `placeOrder` in `components/CartDrawer.tsx`
+to a real API route (or WhatsApp Cloud API / a lightweight DB like
+Supabase) is the natural next step — it's the one place that talks to the
+outside world.

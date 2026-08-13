@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #241012;
+  --color-ink-soft: #3A1E20;
+  --color-cream: #FBF3E6;
+  --color-cream-dim: #F2E7D3;
+  --color-saffron: #E8A33D;
+  --color-saffron-deep: #C97F1E;
+  --color-chili: #8C2F39;
+  --color-chili-deep: #6E212A;
+  --color-brass: #C9A24B;
+  --color-leaf: #4B7B52;
+
+  --font-display: var(--font-display-raw);
+  --font-body: var(--font-body-raw);
+  --font-mono: var(--font-mono-raw);
+
+  --radius-ticket: 14px;
+  --shadow-ticket: 0 1px 0 rgba(36, 16, 18, 0.06), 0 8px 24px -8px rgba(36, 16, 18, 0.25);
+
+  --animate-slide-up: slide-up 0.5s ease-out both;
+  --animate-count-pulse: count-pulse 2s ease-in-out infinite;
+  --animate-cart-in: cart-in 0.3s ease-out both;
+}
+
+@keyframes slide-up {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes count-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+@keyframes cart-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  @apply bg-cream text-ink font-body antialiased;
+}
+h1, h2, h3, h4 {
+  @apply font-display;
+}
+:focus-visible {
+  outline: 2px solid var(--color-chili);
+  outline-offset: 3px;
+}
+
+/* Signature motif: menu / order items rendered as a tear-off ticket,
+   echoing the "order slip" a customer would get placing a real order. */
+.ticket {
+  position: relative;
+  background: var(--color-cream);
+  border-radius: var(--radius-ticket);
+  box-shadow: var(--shadow-ticket);
+}
+
+.ticket-notch::before,
+.ticket-notch::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: var(--ticket-cutout-bg, var(--color-cream-dim));
+  transform: translateY(-50%);
+  z-index: 1;
+}
+.ticket-notch::before {
+  left: -9px;
+}
+.ticket-notch::after {
+  right: -9px;
+}
+
+.tear-line {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-ink) 0,
+    var(--color-ink) 6px,
+    transparent 6px,
+    transparent 14px
+  );
+  height: 1px;
+  opacity: 0.18;
+}
+
+.container-page {
+  @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+}
+
+.eyebrow {
+  @apply font-mono text-xs uppercase tracking-[0.2em] text-chili;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-chili px-6 py-3 font-body font-semibold text-cream transition hover:bg-chili-deep active:scale-[0.98];
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink/15 bg-transparent px-6 py-3 font-body font-semibold text-ink transition hover:border-ink/40 active:scale-[0.98];
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 font-body text-sm font-semibold text-ink/70 transition hover:text-ink;
+}
+
+/* subtle paper grain on dark sections */
+.grain-dark {
+  background-color: var(--color-ink);
+  background-image: radial-gradient(circle at 1px 1px, rgba(251, 243, 230, 0.06) 1px, transparent 0);
+  background-size: 18px 18px;
+}
