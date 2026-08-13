@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { restaurant } from "@/data/restaurant.config";
 import { CartProvider } from "@/components/CartProvider";
 import CartDrawer from "@/components/CartDrawer";
 
-const display = Bricolage_Grotesque({
+const display = Fraunces({
   subsets: ["latin"],
   variable: "--font-display-raw",
-  weight: ["500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "900"],
 });
 const body = Inter({
   subsets: ["latin"],
@@ -22,7 +22,7 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${restaurant.name} | Order Online`,
+  title: `${restaurant.name} | Coffee, Order Online`,
   description: restaurant.tagline,
 };
 

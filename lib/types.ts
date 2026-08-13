@@ -36,6 +36,12 @@ export type RestaurantConfig = {
   /** Currency symbol/prefix shown before prices, e.g. "Rs" */
   currency: string;
   monthlySearches: number;
+  /** Year the shop opened, shown in the marquee / about page */
+  since: number;
+  /** Short one-liner used on the about page hero */
+  about: string;
+  /** Story paragraphs for the about page */
+  story: string[];
   rating: number;
   reviewCount: number;
   avgDeliveryMins: number;

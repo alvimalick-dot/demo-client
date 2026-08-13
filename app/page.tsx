@@ -1,9 +1,9 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Marquee from "@/components/Marquee";
 import StatsBar from "@/components/StatsBar";
-import Menu from "@/components/Menu";
+import FeaturedMenu from "@/components/FeaturedMenu";
 import WhyDirect from "@/components/WhyDirect";
-import Location from "@/components/Location";
 import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -13,10 +13,10 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
+      <Marquee />
       <StatsBar />
-      <Menu />
+      <FeaturedMenu />
       <WhyDirect />
-      <Location />
       <Testimonials />
       <CTA />
       <Footer />

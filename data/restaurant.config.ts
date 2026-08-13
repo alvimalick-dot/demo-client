@@ -31,6 +31,13 @@ export const restaurant: RestaurantConfig = {
   reviewCount: 531,
   avgDeliveryMins: 25,
   currency: "Rs",
+  since: 2019,
+  about:
+    "A neighbourhood roastery that treats every cup like a small ceremony — beans roasted in-house, milk steamed to order, pastries baked before sunrise.",
+  story: [
+    "The Daily Grind started in 2019 with a single espresso machine, a second-hand roaster, and a stubborn belief: a coffee shop should taste like its neighbourhood. We roast small batches every week, buy directly from growers where we can, and refuse to put anything on the menu we wouldn't drink ourselves.",
+    "Most of our regulars found us on Google — then came back because the flat white was right. Today we still write the menu by hand, answer every WhatsApp message ourselves, and hold the door open for the morning rush.",
+  ],
   socials: { instagram: "#", facebook: "#" },
   menu: [
     {

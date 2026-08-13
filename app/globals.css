@@ -1,95 +1,124 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #241012;
-  --color-ink-soft: #3A1E20;
-  --color-cream: #FBF3E6;
-  --color-cream-dim: #F2E7D3;
-  --color-saffron: #E8A33D;
-  --color-saffron-deep: #C97F1E;
-  /* primary accent — roasted coffee brown for the coffee-shop theme */
-  --color-chili: #5B3A29;
-  --color-chili-deep: #43291B;
-  --color-brass: #C9A24B;
-  --color-leaf: #4B7B52;
+  /* ---- Dark roastery palette ---- */
+  --color-ink: #0f0b08;        /* page background — deep espresso */
+  --color-ink-soft: #1b130e;    /* raised card surface */
+  --color-ink-mid: #2a2018;     /* borders / hover surfaces */
+  --color-cream: #f2e7d3;       /* primary text — warm ivory */
+  --color-cream-dim: #c9bca4;   /* muted text */
+  --color-saffron: #e0a83c;     /* caramel gold — primary accent */
+  --color-saffron-deep: #b97e25;
+  --color-chili: #c2623c;       /* terracotta — secondary accent */
+  --color-brass: #c9a24b;       /* soft gold — stars, strength */
+  --color-leaf: #8fa87f;        /* sage — success */
 
   --font-display: var(--font-display-raw);
   --font-body: var(--font-body-raw);
   --font-mono: var(--font-mono-raw);
 
-  --radius-ticket: 14px;
-  --shadow-ticket: 0 1px 0 rgba(36, 16, 18, 0.06), 0 8px 24px -8px rgba(36, 16, 18, 0.25);
+  --radius-ticket: 18px;
+  --shadow-ticket: 0 1px 0 rgba(242, 231, 211, 0.05), 0 24px 48px -20px rgba(0, 0, 0, 0.65);
 
-  --animate-slide-up: slide-up 0.5s ease-out both;
+  --animate-slide-up: slide-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-count-pulse: count-pulse 2s ease-in-out infinite;
-  --animate-cart-in: cart-in 0.3s ease-out both;
+  --animate-cart-in: cart-in 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-spin-slow: spin-slow 18s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-rise: rise 3.2s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
 }
 
 @keyframes slide-up {
-  from { transform: translateY(12px); opacity: 0; }
+  from { transform: translateY(16px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
 @keyframes count-pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.55; }
+  50% { opacity: 0.5; }
 }
 @keyframes cart-in {
   from { transform: translateX(100%); }
   to { transform: translateX(0); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes rise {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  12% { opacity: 0.7; }
+  100% { transform: translateY(-90px) scale(1.6); opacity: 0; }
 }
 
 html {
   scroll-behavior: smooth;
 }
 body {
-  @apply bg-cream text-ink font-body antialiased;
+  @apply bg-ink text-cream font-body antialiased;
+  background-image: radial-gradient(circle at 1px 1px, rgba(242, 231, 211, 0.028) 1px, transparent 0);
+  background-size: 22px 22px;
 }
 h1, h2, h3, h4 {
   @apply font-display;
 }
 :focus-visible {
-  outline: 2px solid var(--color-chili);
+  outline: 2px solid var(--color-saffron);
   outline-offset: 3px;
 }
 
-/* Signature motif: menu / order items rendered as a tear-off ticket,
-   echoing the "order slip" a customer would get placing a real order. */
+::selection {
+  background: var(--color-saffron);
+  color: var(--color-ink);
+}
+
+/* thin, on-brand scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-ink); }
+::-webkit-scrollbar-thumb { background: var(--color-ink-mid); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-saffron-deep); }
+
+/* Signature motif: order slips rendered as tear-off tickets */
 .ticket {
   position: relative;
-  background: var(--color-cream);
+  background: var(--color-ink-soft);
+  border: 1px solid rgba(242, 231, 211, 0.08);
   border-radius: var(--radius-ticket);
   box-shadow: var(--shadow-ticket);
 }
-
 .ticket-notch::before,
 .ticket-notch::after {
   content: "";
   position: absolute;
   top: 50%;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border-radius: 9999px;
-  background: var(--ticket-cutout-bg, var(--color-cream-dim));
+  background: var(--ticket-cutout-bg, var(--color-ink));
   transform: translateY(-50%);
   z-index: 1;
 }
-.ticket-notch::before {
-  left: -9px;
-}
-.ticket-notch::after {
-  right: -9px;
-}
+.ticket-notch::before { left: -10px; }
+.ticket-notch::after { right: -10px; }
 
 .tear-line {
   background-image: repeating-linear-gradient(
     to right,
-    var(--color-ink) 0,
-    var(--color-ink) 6px,
+    var(--color-cream) 0,
+    var(--color-cream) 6px,
     transparent 6px,
     transparent 14px
   );
   height: 1px;
-  opacity: 0.18;
+  opacity: 0.16;
 }
 
 .container-page {
@@ -97,24 +126,36 @@ h1, h2, h3, h4 {
 }
 
 .eyebrow {
-  @apply font-mono text-xs uppercase tracking-[0.2em] text-chili;
+  @apply font-mono text-xs uppercase tracking-[0.22em] text-saffron;
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center gap-2 rounded-full bg-chili px-6 py-3 font-body font-semibold text-cream transition hover:bg-chili-deep active:scale-[0.98];
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-saffron px-6 py-3 font-body font-semibold text-ink transition hover:bg-saffron-deep active:scale-[0.98];
 }
-
 .btn-secondary {
-  @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink/15 bg-transparent px-6 py-3 font-body font-semibold text-ink transition hover:border-ink/40 active:scale-[0.98];
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-cream/25 bg-transparent px-6 py-3 font-body font-semibold text-cream transition hover:border-cream/60 hover:bg-cream/5 active:scale-[0.98];
 }
-
 .btn-ghost {
-  @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 font-body text-sm font-semibold text-ink/70 transition hover:text-ink;
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 font-body text-sm font-semibold text-cream/70 transition hover:text-cream;
 }
 
-/* subtle paper grain on dark sections */
-.grain-dark {
-  background-color: var(--color-ink);
-  background-image: radial-gradient(circle at 1px 1px, rgba(251, 243, 230, 0.06) 1px, transparent 0);
+/* paper-grain emphasis surface (used on dark-accent strips) */
+.grain-card {
+  background-color: var(--color-ink-soft);
+  background-image: radial-gradient(circle at 1px 1px, rgba(242, 231, 211, 0.05) 1px, transparent 0);
   background-size: 18px 18px;
+}
+
+/* aurora glow used behind hero / section headers */
+.glow-gold {
+  background: radial-gradient(60% 60% at 50% 40%, rgba(224, 168, 60, 0.16) 0%, transparent 70%);
+}
+
+/* dashed coffee-ring ornament */
+.ring-dash {
+  background-image: repeating-conic-gradient(
+    from 0deg,
+    rgba(224, 168, 60, 0.5) 0deg 6deg,
+    transparent 6deg 24deg
+  );
 }
